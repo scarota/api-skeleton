@@ -11,6 +11,8 @@ packaging==23.1
 pluggy==1.0.0
 py==1.11.0
 pyparsing==3.0.7
+pytest==7.4.3
+setuptools==68.2.2
 SQLAlchemy==1.4.28
 toml==0.10.2
 typing_extensions==4.0.1
