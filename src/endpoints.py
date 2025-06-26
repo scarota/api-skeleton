@@ -66,7 +66,7 @@ def create_appointment(args):
 def get_all_appointments():
     """Get all appointments"""
     appointments = Appointment.query.order_by(Appointment.start_time).all()
-    return jsonify([appt.json().json for appt in appointments])
+    return jsonify([appt.json().get_json() for appt in appointments])
 
 
 @api.route("/appointments/doctor/<int:doctor_id>")
@@ -159,7 +159,7 @@ def get_next_available(args):
             # If we had a conflict, continue from the new check_time
             continue
 
-    if earliest_slot is None:
+    if earliest_slot is None or selected_doctor is None:
         return jsonify({"error": "No available slots found"}), HTTPStatus.NOT_FOUND
 
     return jsonify(
